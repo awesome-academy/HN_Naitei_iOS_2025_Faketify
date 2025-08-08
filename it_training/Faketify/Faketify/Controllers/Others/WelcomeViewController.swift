@@ -1,29 +1,48 @@
+////
+////  WelcomeViewController.swift
+////  Faketify
+////
+////  Created by Nguyen Duc on 8/7/25.
+////
 //
-//  WelcomeViewController.swift
-//  Faketify
+//import UIKit
 //
-//  Created by Nguyen Duc on 8/7/25.
+//class WelcomeViewController: UIViewController {
+//    
+//    private let signInButton: UIButton = {
+//        let button = UIButton()
+//        button.backgroundColor = .white
+//        button.setTitle("Sign In with Faketify", for: .normal)
+//        button.setTitleColor(.blue, for: .normal)
+//        return button
+//    }()
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        title = "Faketify"
+//        view.backgroundColor = .systemGreen
+//        view.addSubview(signInButton)
+////        signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+//    }
+//    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        signInButton.frame = CGRect(x: 20, y: view.height-50-view.safeAreaInsets.bottom, width: view.width-40, height: 50)
+//    }
+//    
+////    @objc func didTapSignIn() {
+////        let vc = AuthViewController()
+////        vc.completionHandlers = { [weak self] success in
+////            DispatchQueue.main.async {
+////                self?.handleSignIn(success: success ?? false)
+////            }
+////        }
+////        vc.navigationItem.largeTitleDisplayMode = .never
+////        navigationController?.pushViewController(vc, animated: true)
+////    }
 //
-
-import UIKit
-
-class WelcomeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+//    private func handleSignIn(success: Bool) {
+//        
+//    }
+//}
