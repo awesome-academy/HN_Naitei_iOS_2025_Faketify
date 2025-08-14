@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Faketify
 //
 //  Created by Nguyen Duc on 8/7/25.
@@ -7,11 +7,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class HomeViewController: UIViewController {
 
-    private let tableView = UITableView()
-
-    private let songs: [Song] = [
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let mockSongs: [Song] = [
         Song(title: "Síguelo", artist: "Wisin & Yandel", imageName: "siguelocover"),
         Song(title: "Hold Me Close", artist: "Flux Pavilion", imageName: "holdmeclose"),
         Song(title: "Good Looking", artist: "Don Omar", imageName: "goodlooking"),
@@ -22,39 +23,59 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         Song(title: "Right In", artist: "Skrillex", imageName: "rightin"),
         Song(title: "This Land", artist: "Hans Zimmer", imageName: "thisland")
     ]
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Browse"
-        view.backgroundColor = .systemBackground
+        title = "Home"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.identifier)
-        tableView.rowHeight = 70
-        view.addSubview(tableView)
+        setupTableView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
     }
 
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return mockSongs.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath) as? SongTableViewCell else {
-            return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SongTableViewCell.identifier,
+            for: indexPath
+        ) as? SongTableViewCell else {
+            fatalError("Failed to dequeue SongTableViewCell")
         }
-        cell.configure(with: songs[indexPath.row])
+        
+        let song = mockSongs[indexPath.row]
+        cell.configure(with: song)
         return cell
     }
+}
 
+
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // TODO: Push to SongDetailViewController
+        let song = mockSongs[indexPath.row]
+        print("Selected song: \(song.title)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }

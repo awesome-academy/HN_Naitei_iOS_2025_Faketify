@@ -16,14 +16,14 @@ final class AuthManager {
     }
     private init() {}
     
-    public var signInURL: URL? {
+     var signInURL: URL? {
         let scopes = "user-read-private"
         let redirectURI = "https://www.faketify.io"
         let base = "https://accounts.spotify.com/authorize"
         let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)"
         return URL(string: string)
     }
-    var isSignedIn: Bool{
+    var isSignedIn: Bool {
         return false
     }
     
@@ -43,7 +43,7 @@ final class AuthManager {
         return false
     }
     
-    public func exchangeCodeForToken(
+    func exchangeCodeForToken(
         code: String,
         completion: @escaping ((Bool) -> Void)
     )  {

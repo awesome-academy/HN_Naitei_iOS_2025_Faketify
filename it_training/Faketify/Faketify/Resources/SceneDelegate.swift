@@ -29,13 +29,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // Create the window
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = TabBarViewController()
+        // Set up the tab bar controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let tabBarController = storyboard.instantiateInitialViewController() as? UITabBarController else {
+            fatalError("Could not load initial view controller from Main.storyboard")
+        }
         
-        window.makeKeyAndVisible()
+        // Configure the tab bar appearance
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        
+        // Set the root view controller
+        window.rootViewController = tabBarController
         self.window = window
+        window.makeKeyAndVisible()
+        
+        // Print debug information
+        print("✅ Window and root view controller set up")
+        print("📱 Tab bar items: \(tabBarController.viewControllers?.count ?? 0)")
     }
+
+
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

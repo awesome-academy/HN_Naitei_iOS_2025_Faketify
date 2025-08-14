@@ -7,8 +7,17 @@
 
 import Foundation
 
-struct Song {
+struct Song: Codable, Hashable {
     let title: String
     let artist: String
-    let imageName: String  
+    let imageName: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(artist)
+    }
+    
+    static func == (lhs: Song, rhs: Song) -> Bool {
+        return lhs.title == rhs.title && lhs.artist == rhs.artist
+    }
 }
