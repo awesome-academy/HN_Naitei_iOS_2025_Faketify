@@ -42,8 +42,19 @@ final class HomeViewController: UIViewController {
     }
 
     private func setupTableView() {
+        // Register the XIB file for the custom cell
+        let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SongTableViewCell.identifier)
+        
+        // Set table view properties
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 70
+        tableView.estimatedRowHeight = 70
+        tableView.tableFooterView = UIView() // Remove empty cells
+        
+        // Debug: Print registered cell identifiers
+        print("Registered cell identifier: \(SongTableViewCell.identifier)")
     }
 }
 
@@ -54,16 +65,38 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SongTableViewCell.identifier,
-            for: indexPath
-        ) as? SongTableViewCell else {
-            fatalError("Failed to dequeue SongTableViewCell")
-        }
+        print("\n--- cellForRowAt: \(indexPath.row) ---")
         
-        let song = mockSongs[indexPath.row]
-        cell.configure(with: song)
-        return cell
+        // 1. Debug: Print available reuse identifiers
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier) as? SongTableViewCell {
+            print("Successfully dequeued cell with identifier: \(SongTableViewCell.identifier)")
+            let song = mockSongs[indexPath.row]
+            print("Configuring cell with song: \(song.title)")
+            cell.configure(with: song)
+            return cell
+        } else {
+            // 2. Debug: Print all registered cell classes and their identifiers
+            print("Failed to dequeue cell with identifier: \(SongTableViewCell.identifier)")
+            print("Registered cell classes: \(String(describing: tableView.value(forKey: "_cellClassDict")))")
+            
+            // 3. Try to force register the cell again as a fallback
+            let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: SongTableViewCell.identifier)
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier) as? SongTableViewCell {
+                print("Successfully dequeued after re-registering")
+                let song = mockSongs[indexPath.row]
+                cell.configure(with: song)
+                return cell
+            } else {
+                // 4. Last resort: return a basic cell with error info
+                print("Falling back to basic cell")
+                let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "fallback")
+                cell.textLabel?.text = "Failed to load cell"
+                cell.detailTextLabel?.text = "Check console for errors"
+                return cell
+            }
+        }
     }
 }
 

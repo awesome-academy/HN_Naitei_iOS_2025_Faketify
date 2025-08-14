@@ -11,46 +11,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
-//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        
-//        let window = UIWindow(windowScene: windowScene)
-//        if AuthManager.shared.isSignedIn {
-//            window.rootViewController = TabBarViewController()
-//        } else {
-////            WelcomeViewController
-//            window.rootViewController = UINavigationController(rootViewController: HomeViewController())
-//        }
-//        window.makeKeyAndVisible()
-//        self.window = window
-//    }
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // Create the window
         let window = UIWindow(windowScene: windowScene)
         
-        // Set up the tab bar controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tabBarController = storyboard.instantiateInitialViewController() as? UITabBarController else {
             fatalError("Could not load initial view controller from Main.storyboard")
         }
         
-        // Configure the tab bar appearance
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithDefaultBackground()
         UITabBar.appearance().standardAppearance = tabBarAppearance
         
-        // Set the root view controller
         window.rootViewController = tabBarController
         self.window = window
         window.makeKeyAndVisible()
         
-        // Print debug information
-        print("✅ Window and root view controller set up")
-        print("📱 Tab bar items: \(tabBarController.viewControllers?.count ?? 0)")
     }
 
 

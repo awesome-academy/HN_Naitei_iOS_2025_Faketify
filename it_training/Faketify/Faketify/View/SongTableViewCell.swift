@@ -20,13 +20,8 @@ class SongTableViewCell: UITableViewCell {
     }
 
     func configure(with song: Song) {
-        print("Configuring cell for song: \(song.title)")
-        print("Image name: \(song.imageName)")
-        
         songImageView.image = UIImage(named: song.imageName)
         titleLabel.text = song.title
         artistLabel.text = song.artist
-        
-        print("Cell configured - Title: \(titleLabel.text ?? "nil"), Artist: \(artistLabel.text ?? "nil")")
     }
 }

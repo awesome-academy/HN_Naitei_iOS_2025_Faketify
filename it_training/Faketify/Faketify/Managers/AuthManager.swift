@@ -8,12 +8,15 @@
 import Foundation
 
 final class AuthManager {
+    
     static let shared = AuthManager()
     
     struct Constants {
         static let clientID = "e9f87f02cc0a4a6b9cdc2612eadafecf"
         static let clientSecret = "7829b08bb2a849748a210770370dc090"
+        static let tokenAPIURL = "https://accounts.spotify.com/api/token"
     }
+    
     private init() {}
     
      var signInURL: URL? {
@@ -23,6 +26,7 @@ final class AuthManager {
         let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)"
         return URL(string: string)
     }
+    
     var isSignedIn: Bool {
         return false
     }
@@ -45,8 +49,31 @@ final class AuthManager {
     
     func exchangeCodeForToken(
         code: String,
-        completion: @escaping ((Bool) -> Void)
-    )  {
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let url = URL(string: Constants.tokenAPIURL) else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                completion(false)
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("SUCCESS: \(json)")
+            } catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+        task.resume()
+    }
+
+    private func cacheToken() {
         
     }
     
