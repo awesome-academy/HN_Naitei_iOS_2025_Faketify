@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cell" customClass="NewReleaseCollectionViewCell" customModuleProvider="target" reuseIdentifier="NewReleaseCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="340"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="340" height="340"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView id="art" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO"/>
+                    <label id="album" numberOfLines="0" translatesAutoresizingMaskIntoConstraints="NO">
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    </label>
+                    <label id="artist" numberOfLines="1" translatesAutoresizingMaskIntoConstraints="NO">
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                    </label>
+                    <label id="tracks" numberOfLines="1" translatesAutoresizingMaskIntoConstraints="NO">
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="art" firstAttribute="top" secondItem="cell" secondAttribute="top" constant="5" id="c1"/>
+                <constraint firstItem="art" firstAttribute="leading" secondItem="cell" secondAttribute="leading" constant="5" id="c2"/>
+                <constraint firstItem="art" firstAttribute="width" secondItem="cell" secondAttribute="height" constant="-10" id="c3"/>
+                <constraint firstItem="art" firstAttribute="height" secondItem="cell" secondAttribute="height" constant="-10" id="c4"/>
+                <constraint firstItem="album" firstAttribute="leading" secondItem="art" secondAttribute="trailing" constant="10" id="c5"/>
+                <constraint firstItem="album" firstAttribute="top" secondItem="cell" secondAttribute="top" constant="5" id="c6"/>
+                <constraint firstAttribute="trailing" secondItem="album" secondAttribute="trailing" constant="5" id="c7"/>
+                <constraint firstItem="artist" firstAttribute="leading" secondItem="art" secondAttribute="trailing" constant="10" id="c8"/>
+                <constraint firstItem="artist" firstAttribute="top" secondItem="album" secondAttribute="bottom" constant="4" id="c9"/>
+                <constraint firstAttribute="trailing" secondItem="artist" secondAttribute="trailing" constant="5" id="c10"/>
+                <constraint firstItem="tracks" firstAttribute="leading" secondItem="art" secondAttribute="trailing" constant="10" id="c11"/>
+                <constraint firstItem="tracks" firstAttribute="top" secondItem="artist" secondAttribute="bottom" constant="4" id="c12"/>
+            </constraints>
+            <connections>
+                <outlet property="albumCoverImageView" destination="art" id="outlet-art"/>
+                <outlet property="albumNameLabel" destination="album" id="outlet-album"/>
+                <outlet property="artistNameLabel" destination="artist" id="outlet-artist"/>
+                <outlet property="numberOfTracksLabel" destination="tracks" id="outlet-tracks"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
