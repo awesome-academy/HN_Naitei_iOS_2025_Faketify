@@ -3,11 +3,25 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## User settings
-xcuserdata/
+*.xcuserdatad
+*.xcworkspace/xcuserdata
+
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
+
+.DS_Store
+
+## test code
+it_training/Faketify/Controllers/AuthViewController.swift
+it_training/Faketify/Faketify.xcodeproj/project.xcworkspace/xcuserdata/nguyenduc.xcuserdatad/UserInterfaceState.xcuserstate
+it_training/Faketify/Faketify.xcodeproj/xcuserdata/nguyenduc.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+it_training/Faketify/Faketify.xcodeproj/xcuserdata/nguyenduc.xcuserdatad/xcschemes/xcschememanagement.plist
+
+Faketify/Controllers/Others/
+Faketify/Managers/
+Faketify/Models/UserProfile
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
