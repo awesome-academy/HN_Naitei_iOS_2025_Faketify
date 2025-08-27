@@ -37,6 +37,15 @@
 			);
 			target = A9BBF0252E44A6800046F1D0 /* Faketify */;
 		};
+A9BBF0652E44A6A70046F1D0 /* Exceptions for "HN_Naitei_iOS_2025_Faketify" folder in "FaketifyUITests" target */ = {
+	isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+	membershipExceptions = (
+		.github/pull_request_template.md,
+		.gitignore,
+		README.md,
+	);
+	target = A9BBF0452E44A6830046F1D0 /* FaketifyUITests */;
+};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -58,8 +67,14 @@
 			path = FaketifyUITests;
 			sourceTree = "<group>";
 		};
-		A9BBF0642E44A6A70046F1D0 /* HN_Naitei_iOS_2025_Faketify */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
+A9BBF0642E44A6A70046F1D0 /* HN_Naitei_iOS_2025_Faketify */ = {
+	isa = PBXFileSystemSynchronizedRootGroup;
+	exceptions = (
+		A9BBF0652E44A6A70046F1D0 /* Exceptions for "HN_Naitei_iOS_2025_Faketify" folder in "FaketifyUITests" target */,
+	);
+	path = HN_Naitei_iOS_2025_Faketify;
+	sourceTree = "<group>";
+};
 			path = HN_Naitei_iOS_2025_Faketify;
 			sourceTree = "<group>";
 		};
