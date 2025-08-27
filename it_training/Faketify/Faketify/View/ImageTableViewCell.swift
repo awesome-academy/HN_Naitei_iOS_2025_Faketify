@@ -30,7 +30,7 @@ final class ImageTableViewCell: UITableViewCell {
         
     private func setupCollectionView() {
         let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier) // ✅ Đăng ký nib
+        collectionView.register(nib, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier) 
 
         collectionView.delegate = self
         collectionView.dataSource = self
