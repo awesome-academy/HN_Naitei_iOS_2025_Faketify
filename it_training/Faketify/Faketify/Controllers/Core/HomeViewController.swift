@@ -16,7 +16,7 @@ final class HomeViewController: UIViewController {
         Song(title: "Síguelo", artist: "Wisin & Yandel", imageName: "siguelocover", fileName: "Síguelo"),
         Song(title: "Hold Me Close", artist: "Flux Pavilion", imageName: "holdmeclose", fileName: "Hold Me Close"),
         Song(title: "Good Looking", artist: "Don Omar", imageName: "goodlooking", fileName: "Good Looking"),
-        Song(title: "Start Me Up", artist: "The Rolling Stones", imageName: "startmeup", fileName: "Start Me Up"),
+        Song(title: "Start Me Up - Remastered", artist: "The Rolling Stones", imageName: "startmeup", fileName: "Start Me Up"),
         Song(title: "Oh, Pretty Woman", artist: "Roy Orbison", imageName: "prettwoman", fileName: "Oh, Pretty Woman"),
         Song(title: "Mother Knows Best", artist: "Donna Murphy", imageName: "motherknowsbest", fileName: "Mother Knows Best")
     ]
