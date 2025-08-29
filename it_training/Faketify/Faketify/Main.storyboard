@@ -114,49 +114,74 @@
             </objects>
             <point key="canvasLocation" x="-141" y="-90"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="AeZ-gG-p1T">
-            <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="FGV-fB-CdE" customClass="SearchViewController" customModule="Faketify" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gCJ-mB-ktA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="893-hb-HMd">
-                                <rect key="frame" x="-15" y="21" width="423" height="714"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="714" id="68X-lT-pHK"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongTableViewCell" id="ciO-VI-u2Q">
-                                        <rect key="frame" x="0.0" y="50" width="423" height="47.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ciO-VI-u2Q" id="aa9-Ka-eag">
-                                            <rect key="frame" x="0.0" y="0.0" width="423" height="47.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="khX-hs-Mph"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="893-hb-HMd" firstAttribute="bottom" secondItem="khX-hs-Mph" secondAttribute="bottom" id="bottom-table-safearea"/>
-                            <constraint firstItem="893-hb-HMd" firstAttribute="centerX" secondItem="gCJ-mB-ktA" secondAttribute="centerX" id="fAU-NR-KUN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="893-hb-HMd" secondAttribute="trailing" constant="-31" id="h2J-XK-8bT"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="j01-Zo-cBY"/>
-                    <connections>
-                        <outlet property="tableView" destination="893-hb-HMd" id="EnH-27-Twa"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lPo-rM-m88" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="176.33587786259542" y="-726.05633802816908"/>
-        </scene>
+<!--Search View Controller-->
+       <scene sceneID="AeZ-gG-p1T">
+           <objects>
+               <viewController storyboardIdentifier="SearchViewController" id="FGV-fB-CdE" customClass="SearchViewController" customModule="Faketify" sceneMemberID="viewController">
+                   <view key="view" contentMode="scaleToFill" id="gCJ-mB-ktA">
+                       <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                       <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                       <subviews>
+                           <tableView clipsSubviews="YES" contentMode="scaleToFill"
+                                      alwaysBounceVertical="YES"
+                                      dataMode="prototypes"
+                                      style="plain"
+                                      separatorStyle="default"
+                                      rowHeight="-1"
+                                      estimatedRowHeight="-1"
+                                      sectionHeaderHeight="-1"
+                                      estimatedSectionHeaderHeight="-1"
+                                      sectionFooterHeight="-1"
+                                      estimatedSectionFooterHeight="-1"
+                                      translatesAutoresizingMaskIntoConstraints="NO"
+                                      id="893-hb-HMd">
+                               <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                               <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                               <prototypes>
+                                   <tableViewCell clipsSubviews="YES"
+                                                  contentMode="scaleToFill"
+                                                  insetsLayoutMarginsFromSafeArea="NO"
+                                                  selectionStyle="blue"
+                                                  hidesAccessoryWhenEditing="NO"
+                                                  indentationLevel="1"
+                                                  indentationWidth="0.0"
+                                                  reuseIdentifier="SongTableViewCell"
+                                                  id="ciO-VI-u2Q">
+                                       <rect key="frame" x="0.0" y="50" width="393" height="47"/>
+                                       <autoresizingMask key="autoresizingMask"/>
+                                       <tableViewCellContentView key="contentView"
+                                                                 opaque="NO"
+                                                                 clipsSubviews="YES"
+                                                                 multipleTouchEnabled="YES"
+                                                                 contentMode="center"
+                                                                 insetsLayoutMarginsFromSafeArea="NO"
+                                                                 tableViewCell="ciO-VI-u2Q"
+                                                                 id="aa9-Ka-eag">
+                                           <rect key="frame" x="0.0" y="0.0" width="393" height="47"/>
+                                           <autoresizingMask key="autoresizingMask"/>
+                                       </tableViewCellContentView>
+                                   </tableViewCell>
+                               </prototypes>
+                           </tableView>
+                       </subviews>
+                       <viewLayoutGuide key="safeArea" id="khX-hs-Mph"/>
+                       <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                       <constraints>
+                           <constraint firstItem="893-hb-HMd" firstAttribute="top" secondItem="khX-hs-Mph" secondAttribute="top" id="table-top"/>
+                           <constraint firstItem="893-hb-HMd" firstAttribute="leading" secondItem="khX-hs-Mph" secondAttribute="leading" id="table-leading"/>
+                           <constraint firstItem="893-hb-HMd" firstAttribute="trailing" secondItem="khX-hs-Mph" secondAttribute="trailing" id="new-tableview-trailing-safearea"/>
+                           <constraint firstItem="893-hb-HMd" firstAttribute="bottom" secondItem="khX-hs-Mph" secondAttribute="bottom" id="table-bottom"/>
+                       </constraints>
+                   </view>
+                   <navigationItem key="navigationItem" id="j01-Zo-cBY"/>
+                   <connections>
+                       <outlet property="tableView" destination="893-hb-HMd" id="EnH-27-Twa"/>
+                   </connections>
+               </viewController>
+               <placeholder placeholderIdentifier="IBFirstResponder" id="lPo-rM-m88" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+           </objects>
+           <point key="canvasLocation" x="176" y="-726"/>
+       </scene>
         <!--Player View Controller-->
         <scene sceneID="dj4-Mg-plJ">
             <objects>

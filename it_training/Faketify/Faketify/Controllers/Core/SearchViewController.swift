@@ -35,9 +35,9 @@ final class SearchViewController: UIViewController {
         definesPresentationContext = true
         
         let searchTextField = searchController.searchBar.searchTextField
-        searchTextField.autocorrectionType = .default      // để iOS tự xử lý VN/EN
+        searchTextField.autocorrectionType = .default
         searchTextField.spellCheckingType = .no
-        searchTextField.autocapitalizationType = .sentences // Viết hoa đầu câu
+        searchTextField.autocapitalizationType = .sentences
         searchTextField.keyboardType = .default
     }
 }
@@ -65,10 +65,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: SongTableViewCell.identifier,
             for: indexPath
-        ) as! SongTableViewCell
+        ) as? SongTableViewCell else {
+            return UITableViewCell()
+        }
         cell.configure(with: filteredSongs[indexPath.row])
         return cell
     }
@@ -76,7 +78,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let song = filteredSongs[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let playerVC = storyboard.instantiateViewController(
             withIdentifier: "PlayerViewController"
@@ -84,6 +85,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             playerVC.songs = filteredSongs
             playerVC.currentIndex = indexPath.row
             navigationController?.pushViewController(playerVC, animated: true)
+        } else {
+            print("⚠️ Could not instantiate PlayerViewController, check storyboard ID")
         }
     }
 }
