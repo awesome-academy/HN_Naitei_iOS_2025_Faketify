@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aCv-Xu-PyI">
-                        <rect key="frame" x="16" y="8" width="60" height="60"/>
+                        <rect key="frame" x="16" y="8" width="60" height="54"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="G46-t0-uaJ"/>
-                            <constraint firstAttribute="height" constant="60" id="height-constraint"/>
+                            <constraint firstAttribute="width" secondItem="aCv-Xu-PyI" secondAttribute="height" multiplier="10:9" id="wlc-Kl-qqk"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -31,9 +31,9 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="P2b-qd-49m">
-                        <rect key="frame" x="88" y="8" width="81.333333333333314" height="46.333333333333336"/>
+                        <rect key="frame" x="88" y="8" width="81.333333333333314" height="80.333333333333329"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-vL-lLo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-vL-lLo">
                                 <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="22.333333333333332"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="highlightedColor"/>
@@ -45,6 +45,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="7Di-6t-a1L" firstAttribute="top" secondItem="6LO-vL-lLo" secondAttribute="bottom" constant="4" id="EqC-c2-5Id" userLabel="Artist Label.top = Title Label.bottom + 2"/>
+                            <constraint firstAttribute="bottom" secondItem="7Di-6t-a1L" secondAttribute="bottom" constant="12" id="OVe-1F-Hut" userLabel="bottom = Artist Label.bottom + 2"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -69,7 +73,7 @@
                 <outlet property="songImageView" destination="aCv-Xu-PyI" id="Shf-tU-FvJ"/>
                 <outlet property="titleLabel" destination="6LO-vL-lLo" id="hWB-HS-ypM"/>
             </connections>
-            <point key="canvasLocation" x="-6.1068702290076331" y="19.718309859154932"/>
+            <point key="canvasLocation" x="-1" y="32"/>
         </tableViewCell>
     </objects>
     <resources>

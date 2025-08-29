@@ -63,7 +63,7 @@
         <!--Library-->
         <scene sceneID="dvt-Qz-EHc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ulg-op-dLJ" customClass="LibraryViewController" customModule="Faketify" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ulg-op-dLJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Library" image="music.note.list" catalog="system" selectedImage="music.note.list" id="eOF-Na-amp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="libraryNavBar">
@@ -71,15 +71,34 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B7t-h5-Xs4" kind="relationship" relationship="rootViewController" id="VIK-3z-kYa"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDi-UG-LVb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-141" y="519"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="aHO-yh-RmV">
+            <objects>
+                <viewController id="B7t-h5-Xs4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p1m-Fs-aKP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PUt-dP-eDH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nZy-cn-sxc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBH-bA-RRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479" y="1054"/>
+        </scene>
         <!--Search-->
         <scene sceneID="TuG-Ve-xLU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yRT-g0-Huw" customClass="SearchViewController" customModule="Faketify" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yRT-g0-Huw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="j9O-Qm-mus"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="searchNavBar">
@@ -87,10 +106,56 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FGV-fB-CdE" kind="relationship" relationship="rootViewController" id="r0e-BX-tVK"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lQ-Kd-v7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-141" y="-90"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="AeZ-gG-p1T">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="FGV-fB-CdE" customClass="SearchViewController" customModule="Faketify" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gCJ-mB-ktA">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="893-hb-HMd">
+                                <rect key="frame" x="-15" y="21" width="423" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="714" id="68X-lT-pHK"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongTableViewCell" id="ciO-VI-u2Q">
+                                        <rect key="frame" x="0.0" y="50" width="423" height="47.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ciO-VI-u2Q" id="aa9-Ka-eag">
+                                            <rect key="frame" x="0.0" y="0.0" width="423" height="47.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="khX-hs-Mph"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="893-hb-HMd" firstAttribute="bottom" secondItem="khX-hs-Mph" secondAttribute="bottom" id="bottom-table-safearea"/>
+                            <constraint firstItem="893-hb-HMd" firstAttribute="centerX" secondItem="gCJ-mB-ktA" secondAttribute="centerX" id="fAU-NR-KUN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="893-hb-HMd" secondAttribute="trailing" constant="-31" id="h2J-XK-8bT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="j01-Zo-cBY"/>
+                    <connections>
+                        <outlet property="tableView" destination="893-hb-HMd" id="EnH-27-Twa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPo-rM-m88" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176.33587786259542" y="-726.05633802816908"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="dj4-Mg-plJ">
