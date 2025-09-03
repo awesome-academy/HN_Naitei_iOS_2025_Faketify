@@ -18,7 +18,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+           
         tableView.dataSource = self
         tableView.delegate = self
         let songNib = UINib(nibName: "SongTableViewCell", bundle: nil)
