@@ -11,22 +11,8 @@ final class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    // Danh sách Featured
-    private let featuredSongs: [Song] = [
-        Song(title: "Síguelo", artist: "Wisin & Yandel", imageName: "siguelocover", fileName: "Síguelo"),
-        Song(title: "Hold Me Close", artist: "Flux Pavilion", imageName: "holdmeclose", fileName: "Hold Me Close"),
-        Song(title: "Good Looking", artist: "Don Omar", imageName: "goodlooking", fileName: "Good Looking"),
-        Song(title: "Start Me Up - Remastered", artist: "The Rolling Stones", imageName: "startmeup", fileName: "Start Me Up"),
-        Song(title: "Oh, Pretty Woman", artist: "Roy Orbison", imageName: "prettwoman", fileName: "Oh, Pretty Woman"),
-        Song(title: "Mother Knows Best", artist: "Donna Murphy", imageName: "motherknowsbest", fileName: "Mother Knows Best")
-    ]
-    
-    // Danh sách Songs
-    private let songs: [Song] = [
-        Song(title: "Just Around The Riverbend", artist: "Judy Kuhn", imageName: "riverbend", fileName: "Just Around The Riverbend"),
-        Song(title: "Right In", artist: "Skrillex", imageName: "rightin", fileName: "Right In"),
-        Song(title: "This Land", artist: "Hans Zimmer", imageName: "thisland", fileName: "This Land")
-    ]
+    private let featuredSongs = Array(SongRepository.shared.allSongs.prefix(6))
+    private let songs = Array(SongRepository.shared.allSongs.suffix(6))
   
     override func viewDidLoad() {
         super.viewDidLoad()
