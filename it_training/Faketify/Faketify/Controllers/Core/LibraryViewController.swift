@@ -7,40 +7,52 @@
 
 import UIKit
 
-class LibraryViewController: UIViewController {
+final class LibraryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private var savedSongs: [Song] = []
-    
+    private var savedSongs: [Song] = [] {
+        didSet {
+            print("Library updated - savedSongs: \(savedSongs.count)")
+            tableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Library"
-        
+
         let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: SongTableViewCell.identifier)
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 70
         tableView.tableFooterView = UIView()
+        
+        // Lắng nghe notification update
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleSavedSongsUpdated),
+            name: .didUpdateSavedSongs,
+            object: nil
+        )
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         savedSongs = SongRepository.shared.savedSongs
-        print("Library willAppear - savedSongs: \(savedSongs.count)")
-        tableView.reloadData()
     }
-
-
+    
+    @objc private func handleSavedSongsUpdated() {
+        savedSongs = SongRepository.shared.savedSongs
+    }
 }
 
 extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Library rows = \(savedSongs.count)")
         return savedSongs.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: SongTableViewCell.identifier,
@@ -49,7 +61,6 @@ extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let song = savedSongs[indexPath.row]
-        print("Config cell with song: \(song.title) - \(song.artist)")
         cell.configure(with: song)
         return cell
     }

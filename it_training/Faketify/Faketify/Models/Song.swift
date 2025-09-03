@@ -13,7 +13,7 @@ struct Song: Codable, Hashable {
     let imageName: String
     let fileName: String
     var isSaved: Bool = false
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(title)
         hasher.combine(artist)
